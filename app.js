@@ -41,3 +41,68 @@ let cur_hour = cur_hour24 > 12 ? cur_hour24 - 12 : cur_hour24 ;
 // analog clock 01 & 02 End
 
 
+
+// 02
+// calculator Start
+// get elements
+
+
+let dataCal = [];
+let calvalue = (value) => {
+    dataCal.push(value);
+
+    // console.log(dataCal.join(''));
+    // dataCal.join()
+    document.querySelector('.moTop').innerHTML = dataCal.join('');
+    document.querySelector('.mobuttom').innerHTML = 0;
+}
+let oneclear = () => {
+    dataCal.pop();
+    document.querySelector('.moTop').innerHTML = dataCal.join('');
+    document.querySelector('.mobuttom').innerHTML = 0;
+
+}
+let finalresult = () => {
+    let cal_string = dataCal.join('');
+    document.querySelector('.mobuttom').innerHTML =  eval(cal_string).toFixed(2); // on for aviodein overflow-display
+}
+
+let allClear = () => {
+    dataCal = [];
+    document.querySelector('.moTop').innerHTML = 0;
+    document.querySelector('.mobuttom').innerHTML = "";
+
+}
+
+// calculator End
+
+
+
+
+// 03
+// Instant Data With Checkbox Start 
+
+
+const skills = document.querySelectorAll('.skill');
+const get_skill = document.querySelector('.get_skill')
+
+skills.forEach(skill => {
+    
+    skill.addEventListener('change', function () {
+        let all_data = document.querySelectorAll('.skill:checked');
+        
+        let skill_arry = [];
+        all_data.forEach(data => {
+            skill_arry.push(data.value)
+        });
+        let skill_list = '';
+        skill_arry.map(data => { 
+            skill_list += `<div class="list-group-item">${data}</div>`;
+        });
+        get_skill.innerHTML = skill_list;
+    });
+
+    
+});
+
+// Instant Data With Checkbox End 
